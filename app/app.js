@@ -3,8 +3,10 @@
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
   'ngRoute',
+  'myApp.album',
   'myApp.version'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  // Routes will be defined here
+  // add default route
+  $routeProvider.otherwise({redirectTo: '/album'});
 }]);
