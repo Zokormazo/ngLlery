@@ -13,13 +13,7 @@
   <link rel="stylesheet" href="app.css">
 </head>
 <body>
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">ngLlery</a>
-      </div>
-    </div>
-  </nav>
+  <site-header></site-header>
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -28,11 +22,7 @@
     <div ng-view></div>
   </div>
 
-  <footer class="footer">
-    <div class="container">
-      <p class="text-muted">v<span app-version></span></p>
-    </div>
-  </footer>
+  <site-footer></site-footer>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
@@ -46,5 +36,9 @@
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
+  <script src="components/header/header.js"></script>
+  <script src="components/header/header-directive.js"></script>
+  <script src="components/footer/footer.js"></script>
+  <script src="components/footer/footer-directive.js"></script>
 </body>
 </html>

@@ -4,7 +4,8 @@
 angular.module('myApp', [
   'ngRoute',
   'myApp.album',
-  'myApp.version'
+  'myApp.header',
+  'myApp.footer'
 ]).
 config(['$routeProvider', function($routeProvider) {
   // add default route
