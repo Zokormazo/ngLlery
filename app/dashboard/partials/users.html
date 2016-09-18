@@ -1,0 +1,49 @@
+<div class="row dashboard-heading">
+  <div class="col-md-12">
+    <h2>Users
+      <span class="pull-right"><i class="fa fa-users fa-lg"></i></span>
+    </h2>
+  </div>
+</div>
+<div class="row dashboard-new-user-form">
+  <div class="col-md-12">
+    <form name="newUserForm" class="form-inline" ng-submit="addUser()" novalidate>
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+        <input type="text" class="form-control" ng-model="newUserData.username" id="username" placeholder="Username" required>
+        <span class="input-group-addon"><i class="fa fa-at"></i></span>
+        <input type="email" class="form-control" ng-model="newUserData.email" id="email" placeholder="Email Address" required>
+        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+        <input type="password" class="form-control" ng-model="newUserData.password" id="password" placeholder="Password" required>
+        <span class="input-group-addon"><i class="fa fa-users fa-fw"></i></span>
+        <span class="input-group-addon input-group-addon-white">
+          <input type="checkbox" ng-model="newUserRoles.admin" id="admin"> admin
+          <input type="checkbox" ng-model="newUserRoles.poweruser" id="poweruser"> poweruser
+        </span>
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-primary" ng-disabled="newUserForm.$invalid || !newUserForm.$dirty"><i class="fa fa-user-plus"></i></button>
+        </span>
+      </div>
+    </form>
+  </div>
+</div>
+<ul class="list-group dashboard-users-list">
+  <li class="list-group-item dashboard-user-list-heading">
+    <div class="row">
+      <div class="col-md-2"><a href="" ng-click="orderByField='username'; reverseSort=!reverseSort">Username</a></div>
+      <div class="col-md-2"><a href="" ng-click="orderByField='email'; reverseSort=!reverseSort">Email</a></div>
+      <div class="col-md-2"><a href="" ng-click="orderByField='registered_at'; reverseSort=!reverseSort">Registered At</a></div>
+      <div class="col-md-2"><a href="" ng-click="orderByField='last_seen'; reverseSort=!reverseSort">Last Seen</a></div>
+      <div class="col-md-1">Roles</div>
+      <div class="col-md-3 search-bar">
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon"><i class="fa fa-search"></i></span>
+          <input type="text" class="form-control" placeholder="Search" ng-model="searchTerm">
+        </div>
+      </div>
+    </div>
+  </li>
+  <div ng-repeat="user in filtered = users | orderBy:orderByField:reverseSort |filter: searchTerm" ng-if="filtered.length">
+    <dashboard-users-list-item></dashboard-users-list-item>
+  </div>
+</ul>

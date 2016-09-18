@@ -2,11 +2,26 @@
 
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
-  'ngRoute',
+  'ui.router',
+  'myApp.authentication',
+  'myApp.backend',
   'myApp.common',
-  'myApp.album'
-]).
-config(['$routeProvider', function($routeProvider) {
-  // add default route
-  $routeProvider.otherwise({redirectTo: '/album'});
-}]);
+  'myApp.dashboard',
+  'myApp.gallery',
+  'myApp.members',
+  'myApp.webparts'
+])
+
+.constant('apiPrefix', 'http://localhost:5000/api')
+
+.config(function($urlRouterProvider) {
+    $urlRouterProvider.when('', '/index');
+})
+
+.config(function($urlRouterProvider) {
+    $urlRouterProvider.when('/index', '/gallery');
+})
+
+.config(function($urlRouterProvider) {
+  $urlRouterProvider.otherwise('/index');
+});

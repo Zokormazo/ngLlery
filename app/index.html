@@ -10,16 +10,19 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="app.css">
 </head>
-<body>
+<body ng-controller="ApplicationController">
+  <alert-box></alert-box>
   <site-header></site-header>
+
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
-  <div class="container">
-    <div ng-view></div>
+  <div class="content">
+    <div ui-view></div>
   </div>
 
   <site-footer></site-footer>
@@ -30,13 +33,29 @@
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="app.js"></script>
-  <script src="album/album.js"></script>
+  <script src="app-controllers.js"></script>
+  <script src="dashboard/dashboard.js"></script>
+  <script src="dashboard/dashboard-controllers.js"></script>
+  <script src="dashboard/dashboard-directives.js"></script>
+  <script src="gallery/gallery.js"></script>
+  <script src="gallery/gallery-directives.js"></script>
+  <script src="gallery/gallery-controllers.js"></script>
+  <script src="members/members.js"></script>
+  <script src="members/members-controllers.js"></script>
+  <script src="components/authentication/authentication.js"></script>
+  <script src="components/authentication/authentication-controllers.js"></script>
+  <script src="components/authentication/authentication-constants.js"></script>
+  <script src="components/authentication/authentication-directives.js"></script>
+  <script src="components/authentication/authentication-services.js"></script>
+  <script src="components/backend/backend.js"></script>
+  <script src="components/backend/backend-services.js"></script>
   <script src="components/common/common.js"></script>
-  <script src="components/common/common-controllers.js"></script>
-  <script src="components/common/common-directives.js"></script>
   <script src="components/common/common-services.js"></script>
-</body>
+  <script src="components/webparts/webparts.js"></script>
+  <script src="components/webparts/webparts-controllers.js"></script>
+  <script src="components/webparts/webparts-directives.js"></script>
 </html>
