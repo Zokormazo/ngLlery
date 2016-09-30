@@ -13,6 +13,7 @@ angular.module('myApp', [
 ])
 
 .constant('apiPrefix', 'http://localhost:5000/api')
+.constant('imagePrefix', 'http://localhost:5000/images')
 
 .config(function($urlRouterProvider) {
     $urlRouterProvider.when('', '/index');
