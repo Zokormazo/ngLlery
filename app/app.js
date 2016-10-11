@@ -1,15 +1,13 @@
 'use strict';
 
-// Declare app level module which depends on views, and components
 angular.module('myApp', [
   'ui.router',
   'myApp.authentication',
   'myApp.backend',
+  'myApp.config',
   'myApp.common',
-  'myApp.dashboard',
-  'myApp.gallery',
-  'myApp.members',
-  'myApp.webparts'
+  'myApp.public',
+  'myApp.private',
 ])
 
 .constant('apiPrefix', 'http://localhost:5000/api')
@@ -20,9 +18,13 @@ angular.module('myApp', [
 })
 
 .config(function($urlRouterProvider) {
-    $urlRouterProvider.when('/index', '/gallery');
+    $urlRouterProvider.when('/index', '/private');
 })
 
 .config(function($urlRouterProvider) {
   $urlRouterProvider.otherwise('/index');
+})
+
+.config(function($httpProvider) {
+  $httpProvider.useApplyAsync(true);
 });

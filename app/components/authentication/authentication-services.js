@@ -2,14 +2,14 @@
 
 angular.module('myApp.authentication')
 
-.factory('AuthService', function($rootScope, $http, $interval, apiPrefix, USER_ROLES, Session, BackendService, AlertService, ALERT_TYPES){
+.factory('AuthService', function($http, $interval, USER_ROLES, Session, BackendService, ConfigService, AlertService, ALERT_TYPES){
   var authService = {};
 
   authService.login = function(credentials) {
     return BackendService.login(credentials)
       .then(function(res) {
         Session.create(res.data.user.id, res.data.user.roles, res.data.token);
-        authService.stopRefreshToken = $interval(authService.refreshToken, $rootScope.config.auth.tokenExpirationTime*1000 - 30000);
+        authService.stopRefreshToken = $interval(authService.refreshToken, ConfigService.config.auth.tokenExpirationTime*1000 - 30000);
         AlertService.newAlert({
           'type': ALERT_TYPES.success,
           'message': 'Successfully logged'

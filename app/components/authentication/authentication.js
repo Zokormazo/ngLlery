@@ -1,30 +1,16 @@
 'use strict';
 
-angular.module('myApp.authentication', ['ui.router', 'myApp.backend', 'myApp.common'])
+angular.module('myApp.authentication', ['ui.router', 'myApp.backend', 'myApp.common', 'myApp.config'])
 
 .config(function($stateProvider, USER_ROLES) {
-  $stateProvider.state('login', {
-    url: '/login',
-    templateUrl: 'components/authentication/partials/login-page.html',
-    controller: 'LoginPageCtrl',
-    data: {
-      public: true
-    }
-  })
-  .state('sign', {
-    url: '/sign',
-    templateUrl: 'components/authentication/partials/sign-page.html',
-    data: {
-      public: true
-    }
-  })
-  .state('logout', {
+  $stateProvider.state('logout', {
     url: '/logout',
-    controller: function($scope,Session,$state,AuthService) {
+    controller: function($rootScope, $state, AuthService) {
       AuthService.logout();
-      $scope.setCurrentUser(null);
-      $state.go('login')
+      $rootScope.setCurrentUser(null);
+      $state.go('public.login');
     },
+    template: 'logout',
     data: {
       authorizedRoles: [USER_ROLES.all]
     }
@@ -35,7 +21,16 @@ angular.module('myApp.authentication', ['ui.router', 'myApp.backend', 'myApp.com
   $httpProvider.interceptors.push('AuthInterceptor');
 })
 
-.run(function ($rootScope, $state, AUTH_EVENTS, AuthService) {
+.run(function($transitions) {
+  $transitions.onStart({ to: 'private.**'}, function(trans) {
+    var authService = trans.injector().get('AuthService');
+    if (!authService.isAuthenticated()) {
+      // User isn't authenticated, redirecto to login page
+      return trans.router.stateService.target('public.login');
+    }
+  })
+});
+/*.run(function ($rootScope, $state, AUTH_EVENTS, AuthService) {
   $rootScope.$on('$stateChangeStart', function (event, next) {
     if (!next.data.public) {
       var authorizedRoles = next.data.authorizedRoles;
@@ -48,8 +43,8 @@ angular.module('myApp.authentication', ['ui.router', 'myApp.backend', 'myApp.com
           // user is not logged in
           $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
         }
-        $state.go('login');
+        $state.go('public.login');
       }
     }
   })
-});
+});*/

@@ -1,0 +1,19 @@
+.private-header {
+	.persistent-navigation {
+		@extend .navbar;
+		@extend .navbar-default;
+		@extend .navbar-fixed-top;
+
+		.brand {
+			@extend .navbar-brand;
+			font: {
+				family: $font-family-script;
+			}
+		}
+	}
+}
+
+.private-main {
+	@extend .container;
+	padding-top: 70px;
+}

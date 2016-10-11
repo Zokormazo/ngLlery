@@ -25,7 +25,7 @@ angular.module('myApp.common')
 .factory('AlertInterceptor', function($q, AlertService, ALERT_TYPES) {
   var alertInterceptor = {
     responseError: function(error) {
-      if (error.data.message)
+      if (error.data && error.data.message)
         AlertService.newAlert({
           'type': ALERT_TYPES.danger,
           'message': error.data.message

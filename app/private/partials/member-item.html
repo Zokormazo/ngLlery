@@ -1,0 +1,16 @@
+<div class="well well-sm private-member-item">
+  <div class="row">
+    <div class="col-md-4">
+      <p><i class="fa fa-user fa-4x member-icon"></i></p>
+    </div>
+    <div class="col-md-8">
+      <h4>{{ $ctrl.member.username }}</h4>
+      <small ng-if="$ctrl.member.roles" ng-roles><span ng-repeat="role in $ctrl.member.roles">{{ role }}<span ng-if="!$last">, </span></span></small>
+      <div class="btn-group btn-group-sm" role="group">
+        <button type="button" class="btn btn-default">Profile <i class="fa fa-user"></i></button>
+        <button type="button" class="btn btn-default">46 <i class="fa fa-star-o"></i></button>
+        <button type="button" class="btn btn-default">23 <i class="fa fa-comments-o"></i></button>
+      </div>
+    </div>
+  </div>
+</div>

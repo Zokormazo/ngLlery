@@ -11,7 +11,7 @@ Backend interaction Service.
   /*
   Site Config related resources
   */
-  backendService.loadConfig = function() {
+  /*backendService.loadConfig = function() {
     return $http
       .get(apiPrefix + '/config')
       .then(function(res) {
@@ -19,6 +19,14 @@ Backend interaction Service.
       }, function(res) {
         console.log('unable to load config')
       });
+  };*/
+  backendService.getConfig = function() {
+    return $resource(apiPrefix + '/config', null, {
+      query: {
+        method: 'GET',
+        isArray: false
+      }
+    });
   };
 
   /*

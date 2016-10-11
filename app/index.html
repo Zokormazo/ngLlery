@@ -1,62 +1,39 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>ngLlery</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="app.css">
-</head>
-<body ng-controller="ApplicationController">
-  <alert-box></alert-box>
-  <site-header></site-header>
-
-
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
-  <div class="content">
-    <div ui-view></div>
-  </div>
-
-  <site-footer></site-footer>
-
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="bower_components/angular-resource/angular-resource.js"></script>
-  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="app.js"></script>
-  <script src="app-controllers.js"></script>
-  <script src="dashboard/dashboard.js"></script>
-  <script src="dashboard/dashboard-controllers.js"></script>
-  <script src="dashboard/dashboard-directives.js"></script>
-  <script src="gallery/gallery.js"></script>
-  <script src="gallery/gallery-directives.js"></script>
-  <script src="gallery/gallery-controllers.js"></script>
-  <script src="members/members.js"></script>
-  <script src="members/members-controllers.js"></script>
-  <script src="components/authentication/authentication.js"></script>
-  <script src="components/authentication/authentication-controllers.js"></script>
-  <script src="components/authentication/authentication-constants.js"></script>
-  <script src="components/authentication/authentication-directives.js"></script>
-  <script src="components/authentication/authentication-services.js"></script>
-  <script src="components/backend/backend.js"></script>
-  <script src="components/backend/backend-directives.js"></script>
-  <script src="components/backend/backend-services.js"></script>
-  <script src="components/common/common.js"></script>
-  <script src="components/common/common-services.js"></script>
-  <script src="components/webparts/webparts.js"></script>
-  <script src="components/webparts/webparts-controllers.js"></script>
-  <script src="components/webparts/webparts-directives.js"></script>
+<html lang="en" ng-app="myApp">
+    <head>
+        <meta charset="utf-8">
+        <title>ngLlery</title>
+        <meta name="description" content="angularjs based web gallery frontend">
+        <meta name="author" content="Julen Landa Alustiza">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="stylesheets/app.css">
+    </head>
+    <body>
+        <my-app></my-app>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-messages/angular-messages.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+        <script src="app.js"></script>
+        <script src="app-components.js"></script>
+        <script src="public/public.js"></script>
+        <script src="public/public-components.js"></script>
+        <script src="private/private.js"></script>
+        <script src="private/private-components.js"></script>
+        <script src="components/authentication/authentication.js"></script>
+        <script src="components/authentication/authentication-constants.js"></script>
+        <script src="components/authentication/authentication-services.js"></script>
+        <script src="components/backend/backend.js"></script>
+        <script src="components/backend/backend-directives.js"></script>
+        <script src="components/backend/backend-services.js"></script>
+        <script src="components/common/common.js"></script>
+        <script src="components/common/common-components.js"></script>
+        <script src="components/common/common-directives.js"></script>
+        <script src="components/common/common-services.js"></script>
+        <script src="components/config/config.js"></script>
+        <script src="components/config/config-services.js"></script>
+    </body>
 </html>

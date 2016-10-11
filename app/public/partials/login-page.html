@@ -1,0 +1,12 @@
+<main class="public-main">
+    <logged ng-if="$ctrl.currentUser"></logged>
+    <div class="login-form" ng-if="!$ctrl.currentUser && $ctrl.config">
+        <h3>Log In</h3>
+        <form name="form" role="form" ng-submit="$ctrl.login($ctrl.credentials)" novalidate>
+            <input type="text" id="username" ng-model="$ctrl.credentials.username" placeholder="Username" required>
+            <input type="password" id="password" ng-model="$ctrl.credentials.password" placeholder="Password" required>
+            <button type="submit" ng-disabled="form.$invalid || $ctrl.loading"><span>Log In</span></button>
+        </form>
+    </div>
+    <p ng-if="!$ctrl.currentUser && $ctrl.config.auth.enableRegistration">new user? <a ui-sref="public.register">create account</a></p>
+</main>

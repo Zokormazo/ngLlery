@@ -1,0 +1,50 @@
+<main class="public-main">
+    <logged ng-if="$ctrl.currentUser"></logged>
+    <div class="register-form" ng-if="!$ctrl.currentUser && $ctrl.config.auth.enableRegistration">
+        <h3>Register</h3>
+        <form name="form" role="form" ng-submit="$ctrl.register($ctrl.registration)" novalidate>
+            <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$invalid }">
+                <label for="username">Username</label>
+                <input type="text" name="username" ng-model="$ctrl.registration.username" required ng-minlength="3">
+                <div class="help-block" ng-messages="form.username.$error" ng-if="form.username.$dirty">
+                    <p ng-message="required">Username is required.</p>
+                    <p ng-message="minlength">Username must have at least three characters.</p>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$invalid }">
+                <label for="password">Password</label>
+                <input type="password" name="password" ng-model="$ctrl.registration.password" required>
+                <div class="help-block" ng-messages="form.password.$error" ng-if="form.password.$dirty">
+                    <p ng-message="required">Password is required.</p>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.checkPassword.$dirty && form.checkPassword.$invalid }">
+                <label for="checkPassword">Re-type password</label>
+                <input type="password" name="checkPassword" ng-model="$ctrl.check.password" required compare-to="$ctrl.registration.password">
+                <div class="help-block" ng-messages="form.checkPassword.$error" ng-if="form.checkPassword.$dirty">
+                    <p ng-message="required">Re-typing password is required.</p>
+                    <p ng-message="compareTo">Password doesn't match.</p>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && form.email.$invalid }">
+                <label for="email">Email</label>
+                <input type="email" name="email" ng-model="$ctrl.registration.email" required>
+                <div class="help-block" ng-messages="form.email.$error" ng-if="form.email.$dirty">
+                    <p ng-message="required">Email is required.</p>
+                    <p ng-message="email">Email must be a valid email address.</p>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.checkEmail.$dirty && form.checkEmail.$invalid }">
+                <label for="checkEmail">Re-type email</label>
+                <input type="email" name="checkEmail" ng-model="$ctrl.check.email" required compare-to="$ctrl.registration.email">
+                <div class="help-block" ng-messages="form.checkEmail.$error" ng-if="form.checkEmail.$dirty">
+                    <p ng-message="required">Re-typing email is required.</p>
+                    <p ng-message="email">Email must be a valid email address.</p>
+                    <p ng-message="compareTo">Email doesn't match</p>
+                </div>
+            </div>
+            <button type="submit" ng-disabled="form.$invalid || $ctrl.loading"><span>Register</span></button>
+        </form>
+    </div>
+    <p ng-if="!$ctrl.currentUser" class="a">already registered? <a ui-sref="public.login">log in</a></p>
+</main>
