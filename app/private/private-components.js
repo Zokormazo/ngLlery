@@ -131,7 +131,7 @@ angular.module('myApp.private')
 		}
 
 		this.check = {
-			email: this.profile.email,
+			email: '',
 			password: ''
 		}
 
@@ -152,6 +152,7 @@ angular.module('myApp.private')
 					type: ALERT_TYPES.success,
 					message: "Profile saved!"
 				});
+				delete sendData.password;
 				this.close({$value: angular.extend({},this.profile, sendData)});
 			}), angular.bind(this,function() {
 				this.loading = false;
