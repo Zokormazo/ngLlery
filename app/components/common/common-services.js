@@ -8,14 +8,14 @@ angular.module('myApp.common')
   alertService.alerts = [];
 
   alertService.newAlert = function(alert) {
-    var newLength = alertService.alerts.push(alert);
-
-    $timeout(function() {
-      alertService.alerts.splice(0, 1);
-    }, 3000);
+    alertService.alerts.push(alert);
   };
 
-  alertService.get = function() {
+  alertService.deleteAlert = function(index) {
+    alertService.alerts.splice(index, 1);
+  }
+
+  alertService.getAlerts = function() {
     return alertService.alerts;
   }
 

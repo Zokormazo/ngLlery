@@ -2,6 +2,8 @@
 
 angular.module('myApp', [
   'ui.router',
+  'ui.bootstrap',
+  'ngAnimate',
   'myApp.authentication',
   'myApp.backend',
   'myApp.config',

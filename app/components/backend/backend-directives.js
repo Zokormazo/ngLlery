@@ -43,7 +43,9 @@ angular.module('myApp.backend')
 
 .directive('thumbnailSrc', ['$http', 'imagePrefix', function($http,imagePrefix) {
   return {
-    scope: {},
+    scope: {
+      thumbnailWidth: '<'
+    },
     link: function($scope, elem, attrs) {
             function revokeObjectURL() {
               if ($scope.objectURL) {
@@ -63,7 +65,7 @@ angular.module('myApp.backend')
               revokeObjectURL();
 
               if (id) {
-                $http.get(imagePrefix + '/' + id + '/thumbnail/400', {
+                $http.get(imagePrefix + '/' + id + '/thumbnail/' + $scope.thumbnailWidth, {
                   responseType: 'arraybuffer',
                   headers: {
                     'accept': 'image/webp,image/*,*/*;q=0.8'

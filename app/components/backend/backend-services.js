@@ -11,15 +11,6 @@ Backend interaction Service.
   /*
   Site Config related resources
   */
-  /*backendService.loadConfig = function() {
-    return $http
-      .get(apiPrefix + '/config')
-      .then(function(res) {
-        return res.data.config;
-      }, function(res) {
-        console.log('unable to load config')
-      });
-  };*/
   backendService.getConfig = function() {
     return $resource(apiPrefix + '/config', null, {
       query: {
@@ -55,6 +46,15 @@ Backend interaction Service.
   */
   backendService.getUserResource = function(id) {
     return $resource(apiPrefix + '/users/:userId', {userId: id});
+  };
+
+  backendService.getProfileResource = function() {
+    return $resource(apiPrefix + '/profile', null, {
+      query: {
+        method: 'GET',
+        isArray: false
+      }
+    });
   };
 
   /*

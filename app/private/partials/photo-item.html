@@ -1,3 +1,5 @@
-<div class="thumbnail thumbnail-photo">
-  <img thumbnail-src="{{$ctrl.photo.id}}">
+<div class="private-photo-item">
+  <a ui-sref="private.photo({ albumId: $ctrl.album.id, photoId: $ctrl.photo.id })">
+    <img thumbnail-src="{{$ctrl.photo.id}}" thumbnail-width="390">
+  </a>
 </div>

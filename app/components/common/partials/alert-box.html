@@ -1,3 +1,3 @@
 <div class="alert-box">
-  <alert-box-item ng-repeat="alert in $ctrl.alerts" alert="alert"></alert-box-item>
+  <div uib-alert ng-repeat="alert in $ctrl.alerts" ng-class="'alert-' + (alert.type || 'warning')" close="$ctrl.closeAlert($index)" dismiss-on-timeout="3000">{{alert.message}}</div>
 </div>

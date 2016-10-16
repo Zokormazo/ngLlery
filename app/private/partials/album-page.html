@@ -1,13 +1,19 @@
 <main class="private-main">
-  <div class="row">
-    <private-album-item ng-if="$ctrl.albums.length" ng-repeat="album in $ctrl.albums" album="album" class="col-md-4">
-    </private-album-item>
-    <div ng-if="!$ctrl.photos.length" class="col-md-4 col-md-offset-4">
-      No photos yet.
+  <div class="heading">
+    <h2 class="album">{{ $ctrl.album.title }}</h2>
+  </div>
+  <div class="content">
+    <div class="album-list" ng-if="$ctrl.children.length">
+      <private-album-item ng-repeat="album in $ctrl.children" album="album">
+      </private-album-item>
     </div>
-    <private-photo-item ng-if="$ctrl.photos.length" ng-repeat-start="photo in $ctrl.photos" photo="photo" class="col-md-4 col-gallery">
-    </private-photo-item>
-    <div ng-if="$index%3==2" class="clearfix"></div>
-    <div ng-repeat-end=""></div>
+    <div class="photo-list">
+      <div ng-if="!$ctrl.photos.length" class="col-md-4 col-md-offset-4">
+        No photos yet.
+      </div>
+      <private-photo-item ng-if="$ctrl.photos.length" ng-repeat-start="photo in $ctrl.photos" photo="photo" album="$ctrl.album">
+      </private-photo-item>
+      <div ng-if="$index%3==2" class="clearfix"></div>
+      <div ng-repeat-end=""></div>
   </div>
 </main>

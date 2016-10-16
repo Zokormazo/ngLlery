@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.private', ['myApp.backend', 'myApp.authentication', 'myApp.common', 'myApp.config' ])
+angular.module('myApp.private', ['myApp.backend', 'myApp.authentication', 'myApp.common', 'myApp.config', 'ui.bootstrap', 'ui.router' ])
 
 .config(function($stateProvider, USER_ROLES) {
   $stateProvider.state('private', {
@@ -16,7 +16,7 @@ angular.module('myApp.private', ['myApp.backend', 'myApp.authentication', 'myApp
   	component: 'privateIndex'
   })
   .state('private.albums', {
-    url: '/private/albums',
+    url: '/albums',
     component: 'privateAlbumsPage',
     resolve: {
       albums: function(BackendService) {
@@ -25,7 +25,7 @@ angular.module('myApp.private', ['myApp.backend', 'myApp.authentication', 'myApp
     }
   })
   .state('private.album', {
-    url: '/private/albums/{albumId}',
+    url: '/albums/{albumId}',
     component: 'privateAlbumPage',
     resolve: {
       album: function(BackendService, $transition$) {
@@ -39,8 +39,25 @@ angular.module('myApp.private', ['myApp.backend', 'myApp.authentication', 'myApp
       }
     }
   })
+  .state('private.photo', {
+    url: '/albums/{albumId}/photos/{photoId}',
+    onEnter: function($state, $uibModal, $transition$, BackendService) {
+      $uibModal.open({
+        component: 'privatePhotoModal',
+        size: 'lg',
+        resolve: {
+          photo: function() {
+            return BackendService.getPhotoResource($transition$.params().photoId).get();
+          }
+        },
+        windowClass: 'private-photo-modal'
+      }).result.finally(function() {
+        $state.go('private.album', {albumId: $transition$.params().albumId});
+      })
+    }
+  })
   .state('private.members', {
-    url: '/private/members',
+    url: '/members',
     component: 'privateMembersPage',
     resolve: {
       members: function(BackendService) {
@@ -48,8 +65,29 @@ angular.module('myApp.private', ['myApp.backend', 'myApp.authentication', 'myApp
       }
     }
   })
+  .state('private.member', {
+    url: '/members/{memberId}',
+    onEnter: function($state, $uibModal, $transition$, BackendService) {
+      $uibModal.open({
+        component: 'privateMemberModal',
+        resolve: {
+          member: function() {
+            return BackendService.getUserResource($transition$.params().memberId).get();
+          }
+        },
+        windowClass: 'private-member-modal'
+      }).result.finally(function() {
+        $state.go('private.members');
+      })
+    }
+  })
   .state('private.profile', {
-    url: '/private/profile',
-    component: 'privateProfilePage'
+    url: '/profile',
+    component: 'privateProfilePage',
+    resolve: {
+      profile: function(BackendService) {
+        return BackendService.getProfileResource().query();
+      }
+    }
   });
 })

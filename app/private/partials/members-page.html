@@ -1,22 +1,18 @@
 <main class="private-main">
-    <div class="row content-heading">
-      <div class="col-md-12">
-        <h2>Members
-          <span class="pull-right"><i class="fa fa-users fa-lg"></i></span>
-        </h2>
-      </div>
+    <div class="heading">
+        <h2 class="members">Members</h2>
     </div>
-    <div class="content-body">
+    <div class="content">
       <div class="row">
-        <div class="col-md-3 col-md-offset-9">
+        <div class="searchbar">
           <div class="input-group input-group-sm">
             <span class="input-group-addon"><i class="fa fa-search"></i></span>
             <input type="text" class="form-control" placeholder="Search" ng-model="searchTerm">
           </div>
         </div>
       </div>
-      <div class="row member-list">
-        <private-member-item ng-repeat="member in filtered = $ctrl.members | filter: searchTerm" ng-if="filtered.length" member="member" class="col-md-4">
+      <div class="member-list">
+        <private-member-item ng-repeat="member in filtered = $ctrl.members | filter: searchTerm" ng-if="filtered.length" member="member">
         </private-member-item>
       </div>
 </main>

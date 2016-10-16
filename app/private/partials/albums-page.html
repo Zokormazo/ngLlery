@@ -1,0 +1,14 @@
+<main class="private-main">
+	<div class="heading">
+		<h2 class="gallery">{{ $ctrl.config.info.description }}</h2>
+	</div>
+	<div class="content">
+		<div class="album-list">
+			<div ng-if="!$ctrl.albums.length" class="col-md-4 col-md-offset-4">
+	    		No albums yet.
+	  	</div>
+	  	<private-album-item ng-if="$ctrl.albums.length" ng-repeat="album in $ctrl.albums" album="album">
+			</private-album-item>
+		</div>
+	</div>
+</main>

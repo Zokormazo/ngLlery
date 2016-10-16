@@ -1,18 +1,12 @@
-<div class="thumbnail thumbnail-album">
+<div class="private-album-item">
   <a ui-sref="private.album({ albumId: $ctrl.album.id })">
-    <img src="http://placehold.it/450x300">
+    <img ng-if="$ctrl.album.caption_photo_id" thumbnail-src="{{ $ctrl.album.caption_photo_id }}" thumbnail-width="390">
+    <img ng-if="!$ctrl.album.caption_photo_id" src="http://placehold.it/400x300?text=No+images">
     <div class="overlay">
-      <div class="row">
-        <div class="col-md-8">
-          <h2>
-            <span ng-if="$ctrl.album.title !== undefined">{{ $ctrl.album.title }}</span>
-            <span ng-if="$ctrl.album.title == undefined">No title yet.</span>
-          </h2>
-        </div>
-        <div class="col-md-2">
-          <h2>{{ $ctrl.album.photos_count }}</h2>
-        </div>
-      </div>
+      <h2>
+        <span ng-if="$ctrl.album.title !== undefined">{{ $ctrl.album.title }}</span>
+        <span ng-if="$ctrl.album.title == undefined">No title yet.</span>
+      </h2>
     </div>
   </a>
 </div>

@@ -1,0 +1,22 @@
+<main class="private-main">
+  <div class="heading">
+    <h2 class="profile">{{ $ctrl.profile.username }}'s profile</h2>
+  </div>
+  <div class="content">
+    <div class="profile-view">
+      <dl class="user-info">
+        <dt>Email</dt>
+        <dd>{{ $ctrl.profile.email}}</dd>
+        <dt>Groups</dt>
+        <dd ng-if="$ctrl.profile.roles.length"><span ng-repeat="role in $ctrl.profile.roles">{{ role }}<span ng-if="!$last">, </span></span></dd>
+        <dd ng-if="!$ctrl.profile.roles.length">-</dd>
+        <dt>Registered at</dt>
+        <dd>{{ $ctrl.profile.registered_at | jsDate | date:'yyyy/MM/dd HH:mm'}}</dd>
+        <dt>Last seen</dt>
+        <dd>{{ $ctrl.profile.last_seen | jsDate | date:'yyyy/MM/dd HH:mm'}}</dd>
+        <dt>Action</dt>
+        <dd><button type="button" ng-click="$ctrl.openEditModal()">Edit profile</button></dd>
+      </dl>
+    </div>
+  </div>
+</main>

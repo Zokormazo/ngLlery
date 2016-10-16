@@ -5,9 +5,10 @@ angular.module('myApp.authentication', ['ui.router', 'myApp.backend', 'myApp.com
 .config(function($stateProvider, USER_ROLES) {
   $stateProvider.state('logout', {
     url: '/logout',
-    controller: function($rootScope, $state, AuthService) {
+    controller: function($rootScope, $state, AuthService, Session) {
       AuthService.logout();
       $rootScope.setCurrentUser(null);
+      Session.destroy();
       $state.go('public.login');
     },
     template: 'logout',
@@ -22,29 +23,19 @@ angular.module('myApp.authentication', ['ui.router', 'myApp.backend', 'myApp.com
 })
 
 .run(function($transitions) {
-  $transitions.onStart({ to: 'private.**'}, function(trans) {
-    var authService = trans.injector().get('AuthService');
-    if (!authService.isAuthenticated()) {
-      // User isn't authenticated, redirecto to login page
-      return trans.router.stateService.target('public.login');
-    }
-  })
-});
-/*.run(function ($rootScope, $state, AUTH_EVENTS, AuthService) {
-  $rootScope.$on('$stateChangeStart', function (event, next) {
-    if (!next.data.public) {
-      var authorizedRoles = next.data.authorizedRoles;
-      if (!AuthService.isAuthorized(authorizedRoles)) {
-        event.preventDefault();
+  $transitions.onStart({}, function($transition$) {
+    let AuthService = $transition$.injector().get('AuthService');
+    let AUTH_EVENTS = $transition$.injector().get('AUTH_EVENTS');
+    let $rootScope = $transition$.injector().get('$rootScope');
+    if (!$transition$.$to().data.public) {
+      if (!AuthService.isAuthorized($transition$.$to().data.authorizedRoles)) {
         if (AuthService.isAuthenticated()) {
-          // user is not allowed
           $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
         } else {
-          // user is not logged in
           $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
         }
-        $state.go('public.login');
+        return $transition$.router.stateService.target('public.login');
       }
     }
   })
-});*/
+});

@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <h3>{{ $ctrl.member.username }}</h3>
+</div>
+<div class="modal-body" id="modal-body">
+  <dl class="user-info">
+    <dt>Groups</dt>
+    <dd ng-if="$ctrl.member.roles.length"><span ng-repeat="role in $ctrl.member.roles">{{ role }}<span ng-if="!$last">, </span></span></dd>
+    <dd ng-if="!$ctrl.member.roles.length">-</dd>
+    <dt>Registered at</dt>
+    <dd>{{ $ctrl.member.registered_at | jsDate | date:'yyyy/MM/dd HH:mm'}}</dd>
+    <dt>Last seen</dt>
+    <dd>{{ $ctrl.member.last_seen | jsDate | date:'yyyy/MM/dd HH:mm'}}</dd>
+  </dl>
+</div>
+<div class="modal-footer">
+  <button type="button" ng-click="$ctrl.close()">Close</button>
+</div>
