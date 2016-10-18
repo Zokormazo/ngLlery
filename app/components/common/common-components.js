@@ -11,4 +11,21 @@ angular.module('myApp.common')
       AlertService.deleteAlert(index);
     }
   }
+})
+
+.component('confirmationModal', {
+  bindings: {
+    resolve: '<',
+    close: '&',
+    dismiss: '&'
+  },
+  templateUrl: 'components/common/partials/confirmation-modal.html',
+  controller: function() {
+    let defaultSettings = {
+      confirmButtonMessage: 'Accept',
+      cancelButtonMessage: 'Cancel'
+    }
+
+    this.settings = angular.extend({}, defaultSettings, this.resolve.settings);
+  }
 });

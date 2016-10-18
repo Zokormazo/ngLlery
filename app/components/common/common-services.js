@@ -35,4 +35,22 @@ angular.module('myApp.common')
   };
 
   return alertInterceptor;
+})
+
+.factory('ConfirmationModalService', function($uibModal) {
+  var confirmationModalService = {
+    open: function(settings) {
+      return $uibModal.open({
+				backdrop: false,
+				keyboard: true,
+				size: 'sm',
+				component: 'confirmationModal',
+				resolve: {
+					settings: settings
+				}
+			});
+    }
+  };
+
+  return confirmationModalService;
 });

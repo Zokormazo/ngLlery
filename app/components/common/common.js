@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.common', [])
+angular.module('myApp.common', ['ui.bootstrap'])
 
 .constant('ALERT_TYPES', {
   success: 'success',
