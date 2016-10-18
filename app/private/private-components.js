@@ -8,10 +8,21 @@ angular.module('myApp.private')
 
 .component('privateHeader', {
   templateUrl: 'private/partials/header.html',
-  controller: function(ConfigService, $rootScope) {
+  controller: function(ConfigService, ConfirmationModalService, $state, $rootScope) {
   	this.config = ConfigService.config;
 		this.currentUser = $rootScope.currentUser;
 		this.isNavCollapsed = true;
+
+		this.logout = function() {
+
+			ConfirmationModalService.open({
+				message: 'Are you sure you want to logout?',
+				confirmButtonMessage: 'Yes',
+				cancelButtonMessage: 'No'
+			}).result.then(function() {
+				$state.go('logout');
+			});
+		}
   }
 })
 
