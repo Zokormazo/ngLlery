@@ -7,7 +7,9 @@ angular.module('myApp.public')
     <public-header></public-header>
     <alert-box></alert-box>
     <ui-view></ui-view>
-    <public-footer></public-footer>
+    <footer class="public-footer">
+      <p>ngLlery</p>
+    </footer>
     `
 })
 
@@ -16,10 +18,6 @@ angular.module('myApp.public')
   controller: function(ConfigService) {
     this.config = ConfigService.config;
   }
-})
-
-.component('publicFooter', {
-  templateUrl: 'public/partials/footer.html'
 })
 
 .component('logged', {
