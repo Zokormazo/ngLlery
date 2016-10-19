@@ -1,0 +1,20 @@
+.private-profile-edit-modal {
+	.modal-body {
+		input {
+			@extend .form-control;
+		}
+	}
+	.modal-footer {
+		button {
+			@extend .btn;
+		}
+
+		.save {
+			@extend .btn-primary;
+		}
+
+		.cancel {
+			@extend .btn-default;
+		}
+	}
+}

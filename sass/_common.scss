@@ -58,3 +58,23 @@ footer {
 		bottom: 5px;
 	}
 }
+
+.heading {
+	@extend .row;
+	h2 {
+		@extend .text-uppercase;
+		font: {
+			weight: bolder;
+		}
+	}
+}
+
+form {
+	button {
+		@extend .btn;
+	}
+
+	input {
+		@extend .form-control;
+	}
+}

@@ -1,0 +1,68 @@
+.public-main {
+	h3 {
+		text-align: center;
+		margin-bottom: 15px;
+	}
+
+	p {
+		text-align: center;
+	}
+
+	.register-form {
+		@extend .public-box;
+		width: 400px;
+
+		button {
+			span:before {
+				@extend .fa;
+				@extend .fa-user-plus;
+				padding-right: 5px;
+			}
+		}
+	}
+
+	.login-form {
+		@extend .public-box;
+		@extend .text-center;
+		width: 280px;
+		margin-top: 60px;
+
+		input {
+			margin-bottom: 20px;
+		}
+
+		button {
+			span:before {
+				@extend .fa;
+				@extend .fa-sign-in;
+				padding-right: 5px;
+			}
+		}
+	}
+
+	.already-logged {
+		@extend .text-center;
+		margin-top: 30px;
+
+		h3:before {
+			@extend .fa;
+			@extend .fa-exclamation-triangle;
+			@extend .fa-4x;
+			display:block;
+			margin: 40px 0 20px 0;
+		}
+	}
+
+	.uops {
+		@extend .text-center;
+		margin-top: 100px;
+
+		h3:before {
+			@extend .fa;
+			@extend .fa-exclamation-triangle;
+			@extend .fa-4x;
+			display: block;
+			margin: 40px 0 20px 0;
+		}
+	}
+}

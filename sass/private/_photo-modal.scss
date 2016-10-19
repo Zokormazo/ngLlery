@@ -1,0 +1,8 @@
+.private-photo-modal {
+	.modal-body {
+		padding: 0;
+		img {
+			@extend .img-responsive;
+		}
+	}
+}

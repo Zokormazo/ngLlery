@@ -1,0 +1,90 @@
+.private-header {
+	.persistent-navigation {
+		@extend .navbar;
+		@extend .navbar-default;
+		@extend .navbar-fixed-top;
+
+		.persistent-navigation-header {
+			@extend .navbar-header;
+
+			button {
+				@extend .navbar-toggle;
+			}
+
+			a {
+				@extend .navbar-brand;
+				font: {
+					family: $font-family-script;
+				}
+			}
+		}
+
+		.persistent-navigation-main {
+			@extend .navbar-collapse;
+			@extend .collapse;
+
+			.nav-main {
+				@extend .nav;
+				@extend .navbar-nav;
+
+				.albums:before {
+					@extend .fa;
+					@extend .fa-picture-o;
+					padding-right: 5px;
+				}
+
+				.people:before {
+					@extend .fa;
+					@extend .fa-child;
+					padding-right: 5px;
+				}
+
+				.pets:before {
+					@extend .fa;
+					@extend .fa-paw;
+					padding-right: 5px;
+				}
+			}
+
+			.nav-user {
+				@extend .nav;
+				@extend .navbar-nav;
+				@extend .navbar-right;
+
+				#user-menu:before {
+					@extend .fa;
+					@extend .fa-user;
+					padding-right: 5px;
+				}
+
+				ul {
+					@extend .dropdown-menu;
+
+					.profile:before {
+						@extend .fa;
+						@extend .fa-home;
+						padding-right: 5px;
+					}
+
+					.members:before {
+						@extend .fa;
+						@extend .fa-users;
+						padding-right: 5px;
+					}
+
+					.logout:before {
+						@extend .fa;
+						@extend .fa-sign-out;
+						padding-right: 5px;
+					}
+				}
+
+				.dashboard:before {
+					@extend .fa;
+					@extend .fa-gears;
+					padding-right: 5px;
+				}
+			}
+		}
+	}
+}

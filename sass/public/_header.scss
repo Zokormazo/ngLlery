@@ -1,0 +1,18 @@
+.public-header {
+	text-align: center;
+	margin: 40px auto 40px auto;
+
+	h1 {
+		font: {
+			family: $font-family-script;
+			size: 64px;
+		}
+		text-shadow: 2px 2px 4px $gray-darker;
+	}
+
+	h2 {
+		margin-top: 50px;
+		font-style: italic;
+		color: darken($gray-lighter,20%);
+	}
+}
