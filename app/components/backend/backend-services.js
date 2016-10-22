@@ -102,11 +102,11 @@ Backend interaction Service.
   */
 
   backendService.getDashboardAlbumResource = function(id) {
-    return $resource(apiPrex + '/dashboard/albums/:albumId', {albumId: id});
+    return $resource(apiPrefix + '/dashboard/albums/:albumId', {albumId: id});
   };
 
   backendService.getDashboardAlbumChildrenResource = function(id) {
-    return $resource(apiPrefix = '/dashboard/albums/:albumId/children', {albumId : id});
+    return $resource(apiPrefix + '/dashboard/albums/:albumId/children', {albumId : id});
   };
 
   backendService.getDashboardAlbumPhotosResource = function(id) {
