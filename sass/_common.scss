@@ -79,6 +79,11 @@ form {
 	}
 }
 
+.searchbar {
+	@extend .col-md-3;
+	@extend .col-md-offset-9;
+}
+
 .uib-datepicker-popup {
 	background-color: $gray-light;
 	color: $gray-lighter;

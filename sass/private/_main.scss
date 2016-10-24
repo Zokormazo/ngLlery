@@ -3,11 +3,6 @@
 	padding-top: 70px;
 
 	.content {
-		.searchbar {
-			@extend .col-md-3;
-			@extend .col-md-offset-9;
-		}
-
 		.member-list {
 			@extend .row;
 			margin-top: 20px;
