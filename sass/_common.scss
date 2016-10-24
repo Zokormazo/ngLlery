@@ -78,3 +78,8 @@ form {
 		@extend .form-control;
 	}
 }
+
+.uib-datepicker-popup {
+	background-color: $gray-light;
+	color: $gray-lighter;
+}
