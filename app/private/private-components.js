@@ -10,7 +10,7 @@ angular.module('myApp.private')
   templateUrl: 'private/partials/header.html',
   controller: function(AuthService, USER_ROLES, ConfigService, ConfirmationModalService, $state, $rootScope) {
   	this.config = ConfigService.config;
-		this.currentUser = $rootScope.currentUser;
+		this.currentUser = AuthService.getCurrentUser();
 		this.isAuthorized = AuthService.isAuthorized;
 		this.USER_ROLES = USER_ROLES;
 		this.isNavCollapsed = true;

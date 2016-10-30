@@ -3,12 +3,13 @@
 angular.module('myApp.authentication')
 
 .factory('AuthService', function($http, $interval, USER_ROLES, Session, BackendService, ConfigService, AlertService, ALERT_TYPES){
-  var authService = {};
+
+  let authService = {};
 
   authService.login = function(credentials) {
     return BackendService.login(credentials)
       .then(function(res) {
-        Session.create(res.data.user.id, res.data.user.roles, res.data.token);
+        Session.create(res.data.user, res.data.token);
         authService.stopRefreshToken = $interval(authService.refreshToken, ConfigService.config.auth.tokenExpirationTime*1000 - 30000);
         AlertService.newAlert({
           'type': ALERT_TYPES.success,
@@ -44,10 +45,10 @@ angular.module('myApp.authentication')
       .then(function(res) {
         Session.setToken(res.token);
       });
-  }; 
+  };
 
   authService.isAuthenticated = function() {
-    return !!Session.userId;
+    return !!Session.user;
   };
 
   authService.isAuthorized = function(authorizedRoles) {
@@ -56,26 +57,30 @@ angular.module('myApp.authentication')
     }
     if (!authService.isAuthenticated())
       return false
-    for(var role in Session.userRoles) {
+    for(let role in Session.user.roles) {
       if (authorizedRoles.indexOf(role))
         return true
     }
     return (authorizedRoles.indexOf(USER_ROLES.all) !== -1);
   };
 
+  authService.getCurrentUser = function() {
+    return Session.user;
+  }
+
   return authService;
 })
 
 .service('Session', function($http) {
-  this.create = function(userId, userRoles, userToken) {
-    this.userId = userId;
-    this.userRoles = userRoles;
-    $http.defaults.headers.common['Authorization'] = userToken;
+  this.user = null;
+
+  this.create = function(user, token) {
+    this.user = user;
+    $http.defaults.headers.common['Authorization'] = token;
   };
 
   this.destroy = function() {
-    this.userId = null;
-    this.userRoles = [];
+    this.user = null;
     $http.defaults.headers.common['Authorization'] = '';
   };
 

@@ -7,7 +7,6 @@ angular.module('myApp.authentication', ['ui.router', 'myApp.backend', 'myApp.com
     url: '/logout',
     controller: function($rootScope, $state, AuthService, Session) {
       AuthService.logout();
-      $rootScope.setCurrentUser(null);
       Session.destroy();
       $state.go('public.login');
     },

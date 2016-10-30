@@ -32,7 +32,7 @@ angular.module('myApp.public')
   controller: function($rootScope, AUTH_EVENTS, AuthService, ConfigService) {
     this.config = ConfigService.config;
 
-    this.currentUser = $rootScope.currentUser;
+    this.currentUser = AuthService.getCurrentUser();
 
     this.credentials = {
       username: '',
@@ -46,7 +46,6 @@ angular.module('myApp.public')
       AuthService.login(credentials).then(angular.bind(this, function(user) {
         this.loading = false;
         $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-        $rootScope.setCurrentUser(user);
         window.location = '#/index';
       }), angular.bind(this, function() {
         this.loading = false;
