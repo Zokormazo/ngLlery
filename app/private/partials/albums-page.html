@@ -1,14 +1,29 @@
 <main class="private-main">
 	<div class="heading">
-		<h2 class="gallery">{{ $ctrl.config.info.description }}</h2>
+		<div class="title">
+			<h2 class="albums">Albums</h2>
+		</div>
+		<div class="actions">
+			<div class="actions-group">
+				<span class="search-icon"><i></i></span>
+				<input type="text" placeholder="Search" ng-model="$ctrl.searchTerm">
+			</div>
+		</div>
 	</div>
 	<div class="content">
 		<div class="album-list">
-			<div ng-if="!$ctrl.albums.length" class="col-md-4 col-md-offset-4">
-	    		No albums yet.
-	  	</div>
-	  	<private-album-item ng-if="$ctrl.albums.length" ng-repeat="album in $ctrl.albums" album="album">
+			<private-album-item ng-repeat-start="album in $ctrl.filteredAlbums = ($ctrl.albums | filter: $ctrl.searchTerm)" ng-if="$ctrl.filteredAlbums.length" album="album">
 			</private-album-item>
+			<div ng-if="$index%3==2" class="clearfix"></div>
+      <div ng-repeat-end=""></div>
+		</div>
+		<div class="messages">
+			<div class="no-items" ng-if="!$ctrl.albums.length">
+				<p>No albums yet.</p>
+			</div>
+			<div class="no-filtered" ng-if="$ctrl.albums.length && !$ctrl.filteredAlbums.length">
+				<p>No albums for your search criteria.</p>
+			</div>
 		</div>
 	</div>
 </main>

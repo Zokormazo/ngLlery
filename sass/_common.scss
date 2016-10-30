@@ -1,3 +1,8 @@
+@import "common/heading";
+@import "common/content";
+@import "common/alert-box";
+@import "common/modal";
+
 .has-error .form-control, .has-error .help-block {
 	color: $common-has-error-color;
 	border-color: $common-has-error-color;
@@ -41,34 +46,6 @@ footer {
 	}
 }
 
-.alert-box {
-  position: absolute;
-  left: 0;
-  right: 0;
-  z-index: 9999;
-  display: block;
-}
-
-.alert-box .alert {
-  width: 250px;
-  margin: auto;
-	margin-top: 10px;
-	padding: {
-		top: 5px;
-		bottom: 5px;
-	}
-}
-
-.heading {
-	@extend .row;
-	h2 {
-		@extend .text-uppercase;
-		font: {
-			weight: bolder;
-		}
-	}
-}
-
 form {
 	button {
 		@extend .btn;
@@ -79,12 +56,14 @@ form {
 	}
 }
 
-.searchbar {
-	@extend .col-md-3;
-	@extend .col-md-offset-9;
-}
-
 .uib-datepicker-popup {
 	background-color: $gray-light;
 	color: $gray-lighter;
+}
+
+dt {
+	@extend .text-uppercase;
+	font: {
+		weight: bolder;
+	}
 }

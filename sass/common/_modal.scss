@@ -1,0 +1,22 @@
+.modal-body {
+  h3 {
+    margin: {
+      top: 10px;
+      bottom: 5px;
+    }
+  }
+}
+
+.modal-footer {
+  button {
+    @extend .btn;
+
+    &.save {
+      @extend .btn-primary;
+    }
+
+    &.cancel {
+      @extend .btn-default;
+    }
+  }
+}

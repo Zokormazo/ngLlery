@@ -8,13 +8,14 @@ angular.module('myApp.private')
 
 .component('privateHeader', {
   templateUrl: 'private/partials/header.html',
-  controller: function(ConfigService, ConfirmationModalService, $state, $rootScope) {
+  controller: function(AuthService, USER_ROLES, ConfigService, ConfirmationModalService, $state, $rootScope) {
   	this.config = ConfigService.config;
 		this.currentUser = $rootScope.currentUser;
+		this.isAuthorized = AuthService.isAuthorized;
+		this.USER_ROLES = USER_ROLES;
 		this.isNavCollapsed = true;
 
 		this.logout = function() {
-
 			ConfirmationModalService.open({
 				message: 'Are you sure you want to logout?',
 				confirmButtonMessage: 'Yes',
@@ -32,11 +33,12 @@ angular.module('myApp.private')
 
 .component('privateAlbumsPage', {
 	bindings: {
-		albums: '<albums'
+		albums: '<'
 	},
 	templateUrl: 'private/partials/albums-page.html',
-	controller: function(ConfigService) {
-		this.config = ConfigService.config;
+	controller: function() {
+		this.searchTerm = '',
+		this.filteredAlbums = [];
 	}
 })
 
@@ -53,7 +55,12 @@ angular.module('myApp.private')
 		children: '<',
 		photos: '<'
 	},
-	templateUrl: 'private/partials/album-page.html'
+	templateUrl: 'private/partials/album-page.html',
+	controller: function() {
+		this.searchTerm = '',
+		this.filteredPhotos = [];
+		this.filteredChildren = [];
+	}
 })
 
 .component('privatePhotoItem', {
@@ -81,7 +88,11 @@ angular.module('myApp.private')
 	bindings: {
 		members: '<'
 	},
-	templateUrl: 'private/partials/members-page.html'
+	templateUrl: 'private/partials/members-page.html',
+	controller: function() {
+		this.searchTerm = '';
+		this.filteredMembers = [];
+	}
 })
 
 .component('privateMemberItem', {

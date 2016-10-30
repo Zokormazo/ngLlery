@@ -5,7 +5,7 @@ angular.module('myApp.public')
 .component('publicIndex', {
   template: `
     <public-header></public-header>
-    <alert-box></alert-box>
+    <alert-box class="public-alert-box"></alert-box>
     <ui-view></ui-view>
     <footer class="public-footer">
       <p>ngLlery</p>

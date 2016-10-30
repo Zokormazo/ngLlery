@@ -1,18 +1,28 @@
 <main class="private-main">
-    <div class="heading">
-        <h2 class="members">Members</h2>
+  <div class="heading">
+    <div class="title">
+      <h2 class="members">Members</h2>
     </div>
-    <div class="content">
-      <div class="row">
-        <div class="searchbar">
-          <div class="input-group input-group-sm">
-            <span class="input-group-addon"><i class="fa fa-search"></i></span>
-            <input type="text" class="form-control" placeholder="Search" ng-model="searchTerm">
-          </div>
-        </div>
+    <div class="actions">
+      <div class="actions-group">
+        <span class="search-icon"><i></i></span>
+        <input type="text" placeholder="Search" ng-model="$ctrl.searchTerm">
       </div>
-      <div class="member-list">
-        <private-member-item ng-repeat="member in filtered = $ctrl.members | filter: searchTerm" ng-if="filtered.length" member="member">
-        </private-member-item>
+    </div>
+  </div>
+  <div class="content">
+    <div class="member-list">
+      <private-member-item ng-repeat-start="member in $ctrl.filteredMembers = ($ctrl.members | filter: $ctrl.searchTerm)" ng-if="$ctrl.filteredMembers.length" member="member">
+      </private-member-item>
+      <div ng-if="$index%3==2" class="clearfix"></div>
+      <div ng-repeat-end=""></div>
+    </div>
+    <div class="messages">
+      <div class="no-items" ng-if="!$ctrl.members.length">
+        <p>No members yet.</p>
       </div>
-</main>
+      <div class="no-filtered" ng-if="$ctrl.members.length && !$ctrl.filteredMembers.length">
+        <p>No members for your search criteria.</p>
+      </div>
+    </div>
+  </main>

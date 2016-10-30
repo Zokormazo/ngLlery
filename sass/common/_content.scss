@@ -1,0 +1,19 @@
+.content {
+  margin: {
+    top: 10px;
+  } // margin:
+
+  .messages {
+    @extend .row;
+
+    .no-items {
+      @extend .col-md-4;
+      @extend .col-md-offset-4;
+    } // .no-items
+
+    .no-filtered {
+      @extend .col-md-4;
+      @extend .col-md-offset-4;
+    } // .no-filtered
+  } // .messages
+} // .content

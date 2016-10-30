@@ -1,14 +1,17 @@
-<div class="private-member-item">
+<div class="private-member-item" ui-sref="private.member({memberId: $ctrl.member.id})">
   <div class="row">
     <div class="photo">
-      <p class="icon"></p>
+      <i class="icon"></i>
     </div>
     <div class="info">
       <p class="username">{{ $ctrl.member.username }}</p>
-      <p class="roles" ng-if="$ctrl.member.roles"><span ng-repeat="role in $ctrl.member.roles">{{ role }}<span ng-if="!$last">, </span></span></p>
-      <div class="actions" role="group">
-        <button type="button" ui-sref="private.member({memberId: $ctrl.member.id})">Profile</button>
-      </div>
+      <dl>
+        <dt>Groups</dt>
+        <dd ng-if="$ctrl.member.roles.length"><span ng-repeat="role in $ctrl.member.roles">{{ role }}<span ng-if="!$last">, </span></span></dd>
+        <dd ng-if="!$ctrl.member.roles.length">-</dd>
+        <dt>Last seen</dt>
+        <dd>{{ $ctrl.member.last_seen | jsDate | date:'yyyy/MM/dd HH:mm' }}</dd>
+      </dl>
     </div>
   </div>
 </div>

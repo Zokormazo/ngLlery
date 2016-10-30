@@ -27,7 +27,7 @@
                 <li><a class="logout" ng-click="$ctrl.logout()">Logout</a></li>
               </ul>
           	</li>
-            <li><a class="dashboard" href="#">Dashboard</a></li>
+            <li ng-if="$ctrl.isAuthorized($ctrl.USER_ROLES.admin)"><a class="dashboard" ui-sref="dashboard.index">Dashboard</a></li>
           </ul>
         </div>
       </div>

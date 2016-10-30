@@ -1,0 +1,22 @@
+.alert-box {
+  position: absolute;
+  width: 250px;
+  margin-left: -125px;
+  left: 50%;
+  z-index: 9999;
+  display: block;
+
+  .alert {
+    margin-bottom: 5px;
+
+    .close {
+      @include opacity(0);
+    }
+
+    &:hover {
+      .close {
+        @include opacity(.5);
+      }
+    }
+  }
+}

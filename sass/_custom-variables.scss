@@ -7,3 +7,11 @@ $public-box-shadow-color: lighten(#000,10%);
 $font-family-script:  "Lobster" !default;
 
 $fa-font-path:        "../bower_components/font-awesome/fonts" !default;
+
+$private-member-item-dl-horizontal-offset: 75px;
+$private-member-modal-dl-horizontal-offset: 130px;
+
+$overlay-bg: rgba(0, 0, 0, 0.6);
+$overlay-border: rgba(0, 0, 0, 0.65);
+$overlay-color: #bbbbbb;
+$overlay-font-size: 16px;

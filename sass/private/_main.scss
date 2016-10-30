@@ -1,157 +1,162 @@
 .private-main {
 	@extend .container;
-	padding-top: 70px;
+	margin: auto;
+	padding: {
+		top: 70px;
+	} // padding:
+
+	.heading {
+		.title {
+			h2 {
+				&.album {
+					&::before {
+						@extend .fa;
+						@extend .fa-picture-o;
+						padding-right: 10px;
+					} // &:before
+				} // &.album
+
+				&.albums {
+					&:before {
+						@extend .fa;
+						@extend .fa-picture-o;
+						padding-right: 10px;
+					} // &.before
+				} // &.albums
+
+				&.members {
+					&:before {
+						@extend .fa;
+						@extend .fa-users;
+						padding-right: 10px;
+					} // &.before
+				} // &.members
+
+				&.profile {
+					&:before {
+						@extend .fa;
+						@extend .fa-user;
+						padding-right: 10px;
+					} // &.before
+				} // &.profile
+			} //h2
+		} //.title
+	} // .heading
 
 	.content {
 		.member-list {
 			@extend .row;
-			margin-top: 20px;
 
 			private-member-item {
-				@extend .col-md-4;
-			}
-			.private-member-item {
-				@extend .well;
-				@extend .well-sm;
+				@extend .col-xs-12;
+				@extend .col-sm-6;
+				@extend .col-lg-4;
 
-				.photo {
-					@extend .col-sm-4;
+				.private-member-item {
+					@extend .well;
+					@extend .well-sm;
+					cursor: pointer;
 
-					.icon {
-						@extend .fa;
-						@extend .fa-user;
-						@extend .fa-4x;
-					}
-				}
-
-				.info {
-					@extend .col-sm-8;
-
-					.username {
-						font: {
-							size: 18px;
+					.photo {
+						@extend .col-xs-3;
+						@extend .text-center;
+						padding: {
+							right: 5px;
 						}
-					}
 
-					.roles {
-						font: {
-							size: 12px;
+						.icon {
+							@extend .fa;
+							@extend .fa-user;
+							@extend .fa-4x;
+							padding: {
+								left: 10px;
+								right: 10px;
+								bottom: 5px;
+							} // padding:
+							color: $gray-light;
+							background-color: $gray-lighter;
+							border-radius: 50%;
+							border: 1px solid darken($gray-light,10%);
+							box: {
+								shadow: 2px 2px 4px $gray-darker;
+							} // box:
+						} // .icon
+					} // .photo
+
+					.info {
+						@extend .col-xs-9;
+
+						p.username {
+							font: {
+								size: 18px;
+							} // font:
+							border: {
+								bottom: 1px solid $gray-lighter;
+							} // border:
+							margin: {
+								bottom: 5px;
+							} // margin:
+						} // .username
+
+						dl {
+							font: {
+								size: 12px;
+								weight: bold;
+							}
+							margin-bottom: 0;
+
+							dt {
+								float: left;
+								width: ($private-member-item-dl-horizontal-offset - 10);
+								clear: left;
+								text-align: right;
+								@include text-overflow;
+							}
+
+						  dd {
+						    @include clearfix; // Clear the floated `dt` if an empty `dd` is present
+								margin-left: $private-member-item-dl-horizontal-offset;
+						  }
 						}
-					}
 
-					.actions {
-						@extend .btn-group;
-						@extend .btn-group-sm;
+						.actions {
+							@extend .btn-group;
+							@extend .btn-group-sm;
 
-						button {
-							@extend .btn;
-							@extend .btn-default;
-						}
-					}
-				}
-			}
-		}
+							button {
+								@extend .btn;
+								@extend .btn-default;
+							} // button
+						} // .actions
+					} // .info
+				} // .private-member-item
+			} // private-member-item
+		} // .member-list
 
 		.album-list {
 			@extend .row;
-
-			private-album-item {
-				@extend .col-md-4;
-				padding: 2px !important;
-			}
-
-			.private-album-item {
-				@extend .thumbnail;
-				width: 100%;
-				overflow: hidden;
-				position: relative;
-				padding: 0;
-				margin: 0;
-
-				.overlay {
-					@extend .row;
-					width: 100%;
-					position: absolute;
-					overflow: hidden;
-					left: 0;
-					top: auto;
-					bottom: 0;
-					padding: 5px;
-					margin: 0;
-					background: rgba(0, 0, 0, 0.6);
-					border-radius: 0 0 4px 4px;
-					color: #3c4a50;
-					-webkit-transition: -webkit-transform 0.35s;
-					transition: transform 0.35s;
-					-webkit-transform: translate3d(0,100%,0);
-					transform: translate3d(0,100%,0);
-
-					h2 {
-						color: #fff;
-						text-align: center;
-						position: relative;
-						font-size: 14px;
-						padding: 5px;
-						margin: 0px;
-						display: inline-block;
-						-webkit-transition: -webkit-transform 0.35s;
-						transition: transform 0.35s;
-						-webkit-transform: translate3d(0,200%,0);
-						transform: translate3d(0,200%,0);
-					}
-				}
-			}
-			.private-album-item:hover {
-				.overlay {
-					-webkit-transform: translate3d(0,0,0);
-					transform: translate3d(0,0,0);
-
-					h2 {
-						-webkit-transform: translate3d(0,0,0);
-						transform: translate3d(0,0,0);
-						-webkit-transition-delay: 0.05s;
-						transition-delay: 0.05s;
-					}
-				}
-			}
-		}
+		} // .album-list
 
 		.photo-list {
 			@extend .row;
 
-			private-photo-item {
-				@extend .col-md-4;
-				padding: 2px !important;
+		} // .photo-list
 
-				.private-photo-item {
-					@extend .thumbnail;
-					width: 100%;
-					overflow: hidden;
-					position: relative;
-					padding: 0;
-					margin: 0;
-				}
-			}
+		.messages {
+			@extend .row;
 		}
 
-		.profile-view {
+		.profile {
+			@extend .row;
+
 			.user-info {
-				@extend .dl-horizontal;
+				@extend .col-md-6;
+				@extend .col-md-offset-3;
 
-				dt {
-					@extend .text-uppercase;
-					font: {
-						weight: bolder;
-					}
-				}
-
-				dd {
-					button {
-						@extend .btn;
-						@extend .btn-default;
-					}
-				}
-			}
-		}
-	}
-}
+				dl {
+					@extend .dl-horizontal;
+				} // dl
+			} // .user-info
+		} // .profile-view
+	} // .content
+} // .private-main
