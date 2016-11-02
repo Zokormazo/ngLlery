@@ -1,0 +1,13 @@
+<div class="action-bar">
+  <button type="button" class="search" ng-if="$ctrl.search" tooltip-append-to-body="true" uib-tooltip="Search" ng-click="$ctrl.toggleSearch()">
+    <span class="sr-only">Search</span>
+    <i></i>
+  </button>
+  <button ng-repeat="action in $ctrl.actions" type="button" class="{{ action.class }}" tooltip-apprend-to-body="true" ng-click="action.click()" uib-tooltip="{{ action.text }}">
+    <span class="sr-only">{{ action.text }}</span>
+    <i></i>
+  </button>
+  <div class="search-form" ng-if="$ctrl.search" uib-collapse="$ctrl.isSearchCollapsed">
+    <input type="text" ng-model="$ctrl.searchModel"></input>
+  </div>
+</div>
