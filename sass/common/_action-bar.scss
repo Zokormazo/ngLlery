@@ -1,0 +1,47 @@
+action-bar {
+
+  .action-bar {
+    @extend .btn-group;
+    @extend .pull-right;
+    position: relative;
+
+    button {
+      @extend .btn;
+
+      i {
+        @extend .fa;
+      }
+
+      &.search {
+        @extend .btn-default;
+        i {
+          @extend .fa-search;
+        }
+      }
+
+      &.edit {
+        @extend .btn-default;
+
+        i {
+          @extend .fa-pencil;
+        }
+      } // &.edit
+
+      &.add-user {
+        @extend .btn-default;
+      } // &.add-user
+    } // button
+
+    .search-form {
+      position: absolute;
+      width: 200px;
+      right: 0;
+      top: 33px;
+      z-index: 1000;
+
+      input {
+        @extend .form-control;
+      }
+    } //.search-forms
+  } // .action-bar
+} // action-bar
