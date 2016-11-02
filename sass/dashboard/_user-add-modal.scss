@@ -1,0 +1,13 @@
+.dashboard-user-add-modal {
+  .modal-header {
+    h3 {
+      &:before {
+        @extend .fa;
+        @extend .fa-user-plus;
+        @extend .fa-2x;
+        padding-right: 20px;
+        vertical-align: 25%;
+      }
+    }
+  }
+}

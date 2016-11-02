@@ -1,0 +1,13 @@
+.dashboard-user-edit-modal {
+  .modal-header {
+    h3 {
+      &:before {
+        @extend .fa;
+        @extend .fa-user-circle-o;
+        @extend .fa-2x;
+        padding-right: 20px;
+        vertical-align: 25%;
+      }
+    }
+  }
+}

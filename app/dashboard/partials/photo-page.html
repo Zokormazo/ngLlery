@@ -1,0 +1,35 @@
+<main class="dashboard-main">
+  <div class="heading">
+    <div class="title">
+      <h2 class="photo">
+        <span ng-if="$ctrl.photo.title">{{ $ctrl.photo.title }}</span>
+        <span ng-if="!$ctrl.photo.title">No title yet</span>
+      </h2>
+    </div>
+    <action-bar actions="$ctrl.actions">
+    </action-bar>
+  </div>
+  <div class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="well well-sm">
+          <div class="row">
+            <div class="photo">
+              <div class="photo-frame">
+                <img class="img-responsive" thumbnail-src="{{ $ctrl.photo.id }}" thumbnail-width="800">
+              </div>
+            </div>
+            <div class="info">
+              <dl>
+                <dt>Path</dt>
+                <dd>{{ $ctrl.photo.path }}</dd>
+                <dt>Created at</dt>
+                <dd>{{ $ctrl.photo.created_at | jsDate | date:'yyyy/MM/dd HH:mm' }}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

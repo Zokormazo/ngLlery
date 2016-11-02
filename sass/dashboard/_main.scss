@@ -1,0 +1,15 @@
+.dashboard-main {
+	@extend .container-fluid;
+	padding-top: 70px;
+	width: 100%;
+
+	@media (min-width: $screen-sm) {
+		position: absolute;
+		float: right;
+		padding-left: $dashboard-sidebar-sm-width + 15px;
+	} // @media (min-width: $screen-sm)
+
+	@media (min-width: $screen-lg) {
+		padding-left: $dashboard-sidebar-width + 15px;
+	} // @media (min-width: $screen-lg)
+} // .dashboard-main

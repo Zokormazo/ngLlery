@@ -29,6 +29,10 @@ action-bar {
 
       &.add-user {
         @extend .btn-default;
+
+        i {
+          @extend .fa-user-plus;
+        }
       } // &.add-user
     } // button
 

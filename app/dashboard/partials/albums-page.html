@@ -1,0 +1,23 @@
+<main class="dashboard-main">
+  <div class="heading">
+    <div class="title">
+      <h2 class="albums">Albums</h2>
+    </div>
+    <action-bar search-model="$ctrl.searchTerm">
+    </action-bar>
+  </div>
+  <div class="content">
+    <div class="album-list">
+      <dashboard-album-item ng-repeat="album in $ctrl.filteredAlbums = $ctrl.albums | filter: $ctrl.searchTerm" ng-if="$ctrl.filteredAlbums.length" album="album">
+      </dashboard-album-item>
+    </div>
+    <div class="messages">
+      <div class="no-items" ng-if="!$ctrl.albums.length">
+        <p>No albums yet.</p>
+      </div>
+      <div class="no-filtered" ng-if="$ctrl.albums.length && !$ctrl.filteredAlbums.length">
+        <p>No albums for your search criteria.</p>
+      </div>
+    </div>
+  </div>
+</main>

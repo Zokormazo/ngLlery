@@ -1,0 +1,33 @@
+<main class="dashboard-main">
+  <div class="heading">
+    <div class="title">
+      <h2 class="album">
+        <span ng-if="$ctrl.album.title">{{ $ctrl.album.title }}</span>
+      </h2>
+    </div>
+    <action-bar search-model="$ctrl.searchTerm" actions="$ctrl.actions">
+    </action-bar>
+  </div>
+  <div class="content">
+    <div class="album-list" ng-if="$ctrl.children.length">
+      <dashboard-album-item ng-repeat-start="child in $ctrl.filteredChildren = ($ctrl.children | filter: $ctrl.searchTerm)" ng-if="$ctrl.filteredChildren.length" album="child">
+      </dashboard-album-item>
+      <div ng-if="$index%3==2" class="clearfix"></div>
+      <div ng-repeat-end=""></div>
+    </div>
+    <div class="photo-list" ng-if="$ctrl.photos.length">
+      <dashboard-photo-item ng-repeat-start="photo in $ctrl.filteredPhotos = ($ctrl.photos | filter: $ctrl.searchTerm)" ng-if="$ctrl.filteredPhotos.length" photo="photo" album="$ctrl.album">
+      </dashboard-photo-item>
+      <div ng-if="$index%3==2" class="clearfix"></div>
+      <div ng-repeat-end=""></div>
+    </div>
+    <div class="messages">
+      <div class="no-items" ng-if="!$ctrl.children.length && !$ctrl.photos.length">
+        <p>No photos nor subalbums yet.</p>
+      </div>
+      <div class="no-filtered" ng-if="($ctrl.children.length || $ctrl.photos.length) && !$ctrl.filteredChildren.length && !$ctrl.filteredPhotos.length">
+        <p>No photos or subalbums for your search criteria.</p>
+      </div>
+    </div>
+  </div>
+</main>

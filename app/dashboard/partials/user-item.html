@@ -1,0 +1,28 @@
+<div class="dashboard-user-item">
+  <div class="row">
+    <div class="username">
+      <p>{{ $ctrl.user.username }}</p>
+    </div>
+    <div class="actions">
+      <div>
+        <button type="button" class="edit" tooltip-append-to-body="true" uib-tooltip="Edit" ng-click="$ctrl.edit()"><span class="sr-only">Edit</span><i></i></button>
+        <button type="button" class="delete" tooltip-append-to-body="true" uib-tooltip="Delete" ng-click="$ctrl.delete()"><span class="sr-only">Delete</span><i></i></button>
+      </div>
+    </div>
+    <div class="user-info">
+      <dl>
+        <dt>Email</dt>
+        <dd>{{ $ctrl.user.email}}</dd>
+        <dt>Groups</dt>
+        <dd>
+          <span ng-repeat="role in $ctrl.user.roles" ng-if="$ctrl.user.roles.length">{{ role }}<span ng-if="!$last">, </span></span>
+          <span ng-if="!$ctrl.user.roles.length">-</span>
+        </dd>
+        <dt>Registered at</dt>
+        <dd>{{ $ctrl.user.registered_at | jsDate | date:'yyyy/MM/dd HH:mm'}}</dd>
+        <dt>Last seen</dt>
+        <dd>{{ $ctrl.user.last_seen | jsDate | date:'yyyy/MM/dd HH:mm'}}</dd>
+      </dl>
+    </div>
+  </div>
+</div>

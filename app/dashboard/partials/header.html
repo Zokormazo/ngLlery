@@ -1,0 +1,21 @@
+<header class="dashboard-header">
+  <nav class="persistent-navigation" role="navigation">
+    <div class="container-fluid">
+      <div class="persistent-navigation-header">
+        <button type="button" ng-click="$ctrl.isNavCollapsed = !$ctrl.isNavCollapsed">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a ui-sref="dashboard.index" ui-sref-active="active">{{ $ctrl.config.info.name }}</a>
+      </div>
+      <div class="persistent-navigation-main" uib-collapse="$ctrl.isNavCollapsed">
+        <ul class="nav-dashboard">
+          <li><a class="logout" ng-click="$ctrl.logout()">Logout</a></li>
+          <li><a class="index" ui-sref="private.index">Go to website</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

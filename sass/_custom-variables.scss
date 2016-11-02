@@ -1,9 +1,5 @@
 $common-has-error-color: lighten(#a94442,5%);
 
-$public-box-bg-color: darken(#fff,10%);
-$public-box-border-color: #eee;
-$public-box-shadow-color: lighten(#000,10%);
-
 $font-family-script:  "Lobster" !default;
 
 $fa-font-path:        "../bower_components/font-awesome/fonts" !default;
@@ -15,3 +11,12 @@ $overlay-bg: rgba(0, 0, 0, 0.6);
 $overlay-border: rgba(0, 0, 0, 0.65);
 $overlay-color: #bbbbbb;
 $overlay-font-size: 16px;
+
+$dashboard-sidebar-width: 200px;
+$dashboard-sidebar-sm-width: 40px;
+$dashboard-sidebar-li-border-color: #9d9d9d;
+$dashboard-sidebar-li-border-color-active: #ffffff;
+
+$dashboard-user-item-dl-horizontal-offset: 75px;
+$dashboard-album-item-dl-horizontal-offset: 130px;
+$dashboard-photo-item-dl-horizontal-offset: 130px;

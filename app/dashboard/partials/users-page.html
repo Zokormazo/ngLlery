@@ -1,0 +1,15 @@
+<main class="dashboard-main">
+  <div class="heading">
+    <div class="title">
+      <h2 class="users">Users</h2>
+    </div>
+    <action-bar search-model="$ctrl.searchTerm" actions="$ctrl.actions">
+    </action-bar>
+  </div>
+  <div class="content">
+    <div class="user-list">
+      <dashboard-user-item ng-repeat="user in $ctrl.filteredUsers = $ctrl.users | filter: $ctrl.searchTerm" ng-if="$ctrl.filteredUsers.length" user="user">
+      </dashboard-user-item>
+    </div>
+  </div>
+</main>

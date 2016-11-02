@@ -1,5 +1,6 @@
 .heading {
   @extend .row;
+  width: 100%;
   position: relative;
 
   .title {
@@ -7,6 +8,8 @@
 
     h2 {
       @extend .text-uppercase;
+      width: 100%;
+
       font: {
         weight: bolder;
       } // font:

@@ -1,0 +1,88 @@
+dashboard-user-item {
+  @extend .col-xs-12;
+  @extend .col-sm-6;
+  @extend .col-md-4;
+  @extend .col-lg-3;
+
+  .dashboard-user-item {
+    @extend .well;
+    @extend .well-sm;
+
+    .username {
+      @extend .col-xs-8;
+
+      p {
+        margin-bottom: 0;
+        font: {
+          size: 18px;
+          weight: bold;
+        } // font:
+
+        &:before {
+          @extend .fa;
+          @extend .fa-user-circle-o;
+          @extend .fa-2x;
+          padding-right: 20px;
+          vertical-align: -25%;
+        } // &:before
+      } // p
+    } // .username
+
+    .actions {
+      @extend .col-xs-4;
+      vertical-align: middle;
+
+      div {
+        @extend .btn-group;
+        @extend .btn-group-xs;
+        @extend .pull-right;
+
+        button {
+          @extend .btn;
+          @extend .btn-default;
+
+          i {
+            @extend .fa;
+          } // i
+
+          &.edit {
+            i {
+              @extend .fa-pencil;
+            } // i
+          } // &.edit
+
+          &.delete {
+            i {
+              @extend .fa-times;
+            } //i
+          } // &.delete
+        } // button
+      } // div
+    } // .actions
+
+    .user-info {
+      @extend .col-xs-12;
+
+      dl {
+        font: {
+          size: 12px;
+          weight: bold;
+        }
+        margin-bottom: 0;
+
+        dt {
+          float: left;
+          width: ($dashboard-user-item-dl-horizontal-offset - 10);
+          clear: left;
+          text-align: right;
+          @include text-overflow;
+        }
+
+        dd {
+          @include clearfix; // Clear the floated `dt` if an empty `dd` is present
+          margin-left: $dashboard-user-item-dl-horizontal-offset;
+        }
+      }
+    } // .user-info
+  } // .dashboard-user-item
+} // dashboard-user-item

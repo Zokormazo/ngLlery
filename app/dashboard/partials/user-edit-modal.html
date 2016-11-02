@@ -1,0 +1,54 @@
+<form name="form" role="form" ng-submit="$ctrl.save($ctrl.formData)" novalidate>
+  <div class="modal-header">
+    <h3>Edit user: {{ $ctrl.user.username }}</h3>
+  </div>
+  <div class="modal-body" id="modal-body">
+    <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$invalid }">
+      <label for="username">Username</label>
+      <input type="text" name="username" ng-model="$ctrl.formData.username" required ng-minlength="3">
+      <div class="help-block" ng-messages="form.username.$error" ng-if="form.username.$dirty">
+        <p ng-message="required">Username is required.</p>
+        <p ng-message="minlength">Username must have at least three characters.</p>
+      </div>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && form.email.$invalid }">
+      <label for="email">Email</label>
+      <input type="email" name="email" ng-model="$ctrl.formData.email" required>
+      <div class="help-block" ng-messages="form.email.$error" ng-if="form.email.$dirty">
+        <p ng-message="required">Email is required.</p>
+        <p ng-message="email">Email must be a valid email address.</p>
+      </div>
+    </div>
+    <div class="form-group" ng-if="form.email.$dirty" ng-class="{ 'has-error': form.checkEmail.$invalid }">
+      <label for="checkEmail">Re-type email</label>
+      <input type="email" name="checkEmail" ng-model="$ctrl.check.email" required compare-to="$ctrl.formData.email">
+      <div class="help-block" ng-messages="form.checkEmail.$error">
+        <p ng-message="required">Re-typing email is required.</p>
+        <p ng-message="email">Email must be a valid email address.</p>
+        <p ng-message="compareTo">Email doesn't match</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" name="password" ng-model="$ctrl.formData.password">
+    </div>
+    <div class="form-group" ng-if="form.password.$dirty" ng-class="{ 'has-error': form.checkPassword.$invalid }">
+      <label for="checkPassword">Re-type password</label>
+      <input type="password" name="checkPassword" ng-model="$ctrl.check.password" compare-to="$ctrl.formData.password">
+      <div class="help-block" ng-messages="form.checkPassword.$error">
+        <p ng-message="compareTo">Password doesn't match.</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="roles">Roles</label>
+      <div class="btn-group">
+        <label class="btn btn-default" ng-model="$ctrl.formData.roles.admin" uib-btn-checkbox>Admin</label>
+        <label class="btn btn-default" ng-model="$ctrl.formData.roles.poweruser" uib-btn-checkbox>Poweruser</label>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary" ng-disabled="form.$pristine || form.$invalid || $ctrl.loading">Save</button>
+    <button type="button" class="btn btn-warning" ng-click="$ctrl.dismiss()">Cancel</button>
+  </div>
+</form>

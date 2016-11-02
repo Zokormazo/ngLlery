@@ -8,6 +8,7 @@ angular.module('myApp', [
   'myApp.backend',
   'myApp.config',
   'myApp.common',
+  'myApp.dashboard',
   'myApp.public',
   'myApp.private',
 ])

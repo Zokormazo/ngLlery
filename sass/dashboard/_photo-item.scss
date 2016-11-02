@@ -1,0 +1,108 @@
+dashboard-photo-item {
+  @extend .col-xs-12;
+  @extend .col-sm-6;
+  @extend .col-md-4;
+
+  .dashboard-photo-item {
+    @extend .well;
+    @extend .well-sm;
+
+    .row {
+      position: relative;
+
+      .photo {
+        @extend .col-xs-4;
+
+        .photo-frame {
+          display: block;
+          width: 100%;
+          height: 0;
+          overflow: hidden;
+          position: relative;
+          padding: 66.66% 0 0 0;
+          margin: 0;
+
+          img {
+            position: absolute;
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+          } // img
+        } // .photo-frame
+
+      } // .photo
+
+      .caption {
+        @extend .col-xs-8;
+
+        h3 {
+          margin: 0;
+        } // h3
+
+        p {
+          margin: 0;
+        } // p
+      } // .caption
+
+      .photo-info {
+        @extend .col-xs-12;
+
+        dl {
+          font: {
+            size: 12px;
+            weight: bold;
+          } //font:
+          margin-bottom: 0;
+
+          dt {
+            float: left;
+            width: ($dashboard-photo-item-dl-horizontal-offset - 10);
+            clear: left;
+            text-align: right;
+            @include text-overflow;
+          } // dt
+
+          dd {
+            @include clearfix; // Clear the floated `dt` if an empty `dd` is present
+            margin-left: $dashboard-photo-item-dl-horizontal-offset;
+          } // dd
+        } // dl
+      } // .album-info
+    } // .row
+
+    .actions {
+      @extend .btn-group;
+      @extend .btn-group-xs;
+      @extend .pull-right;
+      position: absolute;
+      top: 10px;
+      right: 25px;
+
+      button {
+        @extend .btn;
+        @extend .btn-default;
+
+        i {
+          @extend .fa;
+        } // i
+
+        &.edit {
+          i {
+            @extend .fa-pencil;
+          } // i
+        } // &.edit
+
+        &.view {
+          i {
+            @extend .fa-eye;
+          } //i
+        } // &.delete
+      } // button
+    } // .actions
+  } // .dashboard-photo-item
+} // dashboard-photo-item

@@ -1,0 +1,40 @@
+<div class="dashboard-album-item">
+  <div class="row">
+    <div class="album-photo">
+      <div class="photo-frame">
+        <img ng-if="$ctrl.album.caption_photo_id" thumbnail-src="{{ $ctrl.album.caption_photo_id }}" thumbnail-width="160">
+        <img ng-if="!$ctrl.album.caption_photo_id" src="http://placehold.it/160x120?text=No+images">
+      </div>
+    </div>
+    <div class="caption">
+      <h3>
+        <span ng-if="$ctrl.album.title">{{ $ctrl.album.title }}</span>
+        <span ng-if="!$ctrl.album.title">No title yet</span>
+      </h3>
+      <p>
+        <span ng-if="$ctrl.album.description">{{ $ctrl.album.description }}</span>
+        <span ng-if="!$ctrl.album.description">No description yet</span>
+      </p>
+      <p ng-if="$ctrl.album.timestamp_from">
+        <span ng-if="$ctrl.album.timestamp_to">From {{ $ctrl.album.timestamp_from | jsDate | date:'yyyy/MM/dd' }} to {{ $ctrl.album.timestamp_to | jsDate | date:'yyyy/MM/dd' }}</span>
+        <span ng-if="!$ctrl.album.timestamp_to">At {{ $ctrl.album.timestamp_from | jsDate | date:'yyyy/MM/dd' }}</span>
+      </p>
+    </div>
+    <div class="album-info">
+      <dl>
+        <dt>Path</dt>
+        <dd>{{ $ctrl.album.path }}/</dd>
+        <dt>Created at</dt>
+        <dd>{{ $ctrl.album.created_at | jsDate | date:'yyyy/MM/dd HH:mm' }}</dd>
+        <dt>Photos</dt>
+        <dd>{{ $ctrl.album.photos_count }}</dd>
+        <dt>Subalbums</dt>
+        <dd>{{ $ctrl.album.children_count }}</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="actions">
+    <button type="button" class="explore" tooltip-append-to-body="true" uib-tooltip="Explore" ui-sref="dashboard.album({albumId: $ctrl.album.id})"><span class="sr-only">Explore</span><i></i></button>
+    <button type="button" class="edit" tooltip-append-to-body="true" uib-tooltip="Edit" ng-click="$ctrl.edit()"><span class="sr-only">Edit</span><i></i></button>
+  </div>
+</div>

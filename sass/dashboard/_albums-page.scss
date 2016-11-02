@@ -1,0 +1,9 @@
+.dashboard-main {
+  .album-list {
+    @extend .row;
+  } // .album-list
+
+  .photo-list {
+    @extend .row;
+  } // .photo-list
+} // .dashboard-main
