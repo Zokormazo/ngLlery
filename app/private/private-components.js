@@ -134,6 +134,12 @@ angular.module('myApp.private')
 				this.profile = newProfile;
 			}));
 		};
+
+		this.actions = [{
+			'text': 'Edit',
+			'class': 'edit',
+			'click': angular.bind(this, this.openEditModal)
+		}];
 	}
 })
 

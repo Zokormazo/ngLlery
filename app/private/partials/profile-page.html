@@ -3,13 +3,8 @@
     <div class="title">
       <h2 class="profile">{{ $ctrl.profile.username }}'s profile</h2>
     </div>
-    <div class="actions">
-      <div class="actions-group">
-        <span class="buttons">
-          <button type="button" class="edit" ng-click="$ctrl.openEditModal()">Edit</button>
-        </span>
-      </div>
-    </div>
+    <action-bar search="false" actions="$ctrl.actions">
+    </action-bar>
   </div>
   <div class="content">
     <div class="profile">

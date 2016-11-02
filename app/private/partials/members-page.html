@@ -3,12 +3,8 @@
     <div class="title">
       <h2 class="members">Members</h2>
     </div>
-    <div class="actions">
-      <div class="actions-group">
-        <span class="search-icon"><i></i></span>
-        <input type="text" placeholder="Search" ng-model="$ctrl.searchTerm">
-      </div>
-    </div>
+    <action-bar search-model="$ctrl.searchTerm">
+    </action-bar>
   </div>
   <div class="content">
     <div class="member-list">
